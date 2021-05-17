@@ -17,7 +17,7 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->group(['prefix' => 'api/user'], function () use ($router) {
+$router->group(['prefix' => 'api/user', 'middleware' => ['login']], function () use ($router) {
 
     $router->get('/', 'UserController@index');
 
@@ -26,7 +26,7 @@ $router->group(['prefix' => 'api/user'], function () use ($router) {
     $router->put('/{username}', 'UserController@editUser');
 });
 
-$router->group(['prefix' => 'api/book'], function () use ($router) {
+$router->group(['prefix' => 'api/book', 'middleware' => ['login']], function () use ($router) {
 
     $router->get('/', 'BooksController@index');
 
@@ -41,11 +41,20 @@ $router->group(['prefix' => 'api/book'], function () use ($router) {
     $router->delete('/{id}', 'BooksController@deletebyId');
 });
 
-$router->group(['prefix' => 'api/pinjam'], function () use ($router) {
+$router->group(['prefix' => 'api/pinjam', 'middleware' => ['login']], function () use ($router) {
 
     $router->get('/{username}', 'PeminjamanController@showPinjaman');
 
     $router->post('/', 'PeminjamanController@store');
 
     $router->delete('/{id}', 'PeminjamanController@destroy');
+});
+
+$router->group(['prefix' => 'api'], function () use ($router) {
+
+    $router->post("/register", "AuthController@register");
+
+    $router->post("/login", "AuthController@login");
+
+    $router->post("/logout", "AuthController@logout");
 });

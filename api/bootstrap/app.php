@@ -81,6 +81,10 @@ $app->configure('session');
 //     'auth' => App\Http\Middleware\Authenticate::class,
 // ]);
 
+$app->routeMiddleware([
+    'login' => App\Http\Middleware\LoginMiddleware::class,
+]);
+
 $app->middleware([
     \Illuminate\Session\Middleware\StartSession::class,
 ]);
@@ -100,8 +104,8 @@ $app->bind(\Illuminate\Session\SessionManager::class, function () use ($app) {
 |
 */
 
-// $app->register(App\Providers\AppServiceProvider::class);
-// $app->register(App\Providers\AuthServiceProvider::class);
+$app->register(App\Providers\AppServiceProvider::class);
+$app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 $app->register(\Illuminate\Session\SessionServiceProvider::class);
 

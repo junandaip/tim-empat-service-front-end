@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('kondisi');
             $table->integer('role');
+            $table->string("token")->nullable();
             $table->timestamps();
         });
     }
