@@ -25,3 +25,18 @@ $router->group(['prefix' => 'api/user'], function () use ($router) {
 
     $router->put('/{username}', 'UserController@editUser');
 });
+
+$router->group(['prefix' => 'api/book'], function () use ($router) { 
+    
+    $router->get('/', 'BooksController@index');
+
+    $router->get('/id/{id}', 'BooksController@getId');
+
+    $router->get('/judul/{judul}', 'BooksController@getJudul');
+
+    $router->post('/', 'BooksController@createBuku');
+
+    $router->put('/{id}', 'BooksController@updateBuku');
+
+    $router->delete('/{id}', 'BooksController@deletebyId');
+});
