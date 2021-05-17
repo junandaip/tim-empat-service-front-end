@@ -86,8 +86,6 @@ class AuthController extends Controller
                 "code"    => 200,
                 "result"  => [
                     "token" => $newtoken,
-                    // "token session" => $session->get('token'),
-                    // "username session" => $session->get('username')
                 ]
             ];
         } else {
@@ -122,7 +120,7 @@ class AuthController extends Controller
         $session->flush();
 
         return response()->json([
-            'logout' => true,
+            'message' => "logout_success",
         ], 200);
     }
 

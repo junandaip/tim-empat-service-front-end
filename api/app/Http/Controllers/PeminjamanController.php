@@ -10,20 +10,19 @@ use Illuminate\Support\Facades\Http;
 use GuzzleHttp\Client;
 
 use App\Models\Peminjaman;
+use App\Models\Book;
+use App\Models\User;
 
 class PeminjamanController extends Controller
 {
-    public function showPinjaman($username)
+    public function showPinjaman(Request $request, $username)
     {
+        $session = $request->session();
         $pinjaman = Peminjaman::where('username', $username)->first();
         if ($pinjaman) {
-            $id = $pinjaman->id_buku;
-            $response = Http::get('http://localhost:8000/book/id/' . $id);
-
-            $result = $response->json();
-
+            $buku = Book::where('id', $pinjaman->id_buku)->first();
             return response()->json([
-                'Buku' => $result,
+                'Buku' => $buku,
                 $pinjaman
             ], 200);
         } else {
@@ -35,6 +34,7 @@ class PeminjamanController extends Controller
 
     public function store(Request $request)
     {
+        $session = $request->session();
         $this->validate($request, [
             'username' => 'required',
             'id_buku' => 'required'
@@ -43,19 +43,14 @@ class PeminjamanController extends Controller
         $pinjaman = Peminjaman::create(
             $request->only(['username', 'id_buku'])
         );
-        $response = Http::get('http://localhost:8000/book/id/' . $request->id_buku);
-        $datajson = json_decode($response, TRUE);
-        $data = $datajson['data'];
-        $stock = $data['stock'] - 1;
-        $kondisi = 0;
 
-        Http::put('http://localhost:8000/book/' . $request->id_buku, [
-            'stock' => $stock
-        ]);
+        $buku = Book::where('id', $request->id_buku)->first();
+        $stok = $buku->stock - 1;
+        Book::where('id', $request->id_buku)
+            ->update(['stock' => $stok]);
 
-        Http::put('http://localhost:8090/user/' . $request->username, [
-            'kondisi' => $kondisi
-        ]);
+        User::where('username', $request->username)
+            ->update(['kondisi' => 0]);
 
         return response()->json([
             'created' => true,
@@ -64,33 +59,28 @@ class PeminjamanController extends Controller
     }
 
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
+        $session = $request->session();
         try {
             $pinjaman = Peminjaman::findOrFail($id);
         } catch (ModelNotFoundException $e) {
             return response()->json([
                 'error' => [
-                    'message' => 'book not found'
+                    'message' => 'anda belum meminjam'
                 ]
             ], 404);
         }
 
         $pinjaman->delete();
 
-        $response = Http::get('http://localhost:8000/book/id/' . $pinjaman->id_buku);
-        $datajson = json_decode($response, TRUE);
-        $data = $datajson['data'];
-        $stock = $data['stock'] + 1;
-        $kondisi = 0;
+        $buku = Book::where('id', $pinjaman->id_buku)->first();
+        $stok = $buku->stock + 1;
+        Book::where('id', $pinjaman->id_buku)
+            ->update(['stock' => $stok]);
 
-        Http::put('http://localhost:8000/book/' . $pinjaman->id_buku, [
-            'stock' => $stock
-        ]);
-
-        Http::put('http://localhost:8000/user/' . $pinjaman->username, [
-            'kondisi' => $kondisi
-        ]);
+        User::where('username', $pinjaman->username)
+            ->update(['kondisi' => 1]);
 
         return response()->json([
             'deleted' => true
