@@ -111,6 +111,23 @@ $app->register(\Illuminate\Session\SessionServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------
+| Register Middleware
+|--------------------------------------------------------------------------
+*/
+$app->middleware([
+    App\Http\Middleware\CorsMiddleware::class
+]);
+
+
+/*
+|--------------------------------------------------------------------------
+| Register Service Providers
+|--------------------------------------------------------------------------
+*/
+$app->register(App\Providers\CatchAllOptionsRequestsProvider::class);
+
+/*
+|--------------------------------------------------------------------------
 | Load The Application Routes
 |--------------------------------------------------------------------------
 |
