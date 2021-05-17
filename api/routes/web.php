@@ -16,3 +16,12 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->group(['prefix' => 'api/user'], function () use ($router) {
+
+    $router->get('/', 'UserController@index');
+
+    $router->get('/{username}', 'UserController@getByUsername');
+
+    $router->put('/{username}', 'UserController@editUser');
+});
