@@ -59,10 +59,9 @@
         methods: {
             getPinjaman(){
                 axios
-                    .get("http://localhost:8091/api/pinjam/"+ this.username,{
+                    .get("http://localhost:8000/api/pinjam/"+ this.username,{
                         params: {
-                            token:
-                                "As5PQrl9b3Q7jQWlSdSHBdn2qlWeeJs1ZlsdCufEdX7gxixdAqnhidL2oq43KY5fsgcEdVq6dTVPQu3T",
+                            token: window.sessionStorage.getItem("token"),
                         },
                     })
                     .then((response) => {
@@ -75,10 +74,9 @@
             },
             PostReturn(id){
                 axios
-                    .delete("http://localhost:8091/api/pinjam/"+ id,{
+                    .delete("http://localhost:8000/api/pinjam/"+ id,{
                         params: {
-                            token:
-                                "As5PQrl9b3Q7jQWlSdSHBdn2qlWeeJs1ZlsdCufEdX7gxixdAqnhidL2oq43KY5fsgcEdVq6dTVPQu3T",
+                            token: window.sessionStorage.getItem("token"),
                         },
                     })
                     .then((response) => {
