@@ -47,6 +47,7 @@ export default {
   data() {
     return {
       books: [],
+      username: window.sessionStorage.getItem("username")
     };
   },
   mounted() {
@@ -58,7 +59,7 @@ export default {
         .get("http://localhost:8091/api/book", {
           params: {
             token:
-              "7OXch6V6xJjIv88YVSn1OqmyS9aw1xEueWvlyX4F0I2OeJg0E338moCEflchPv57gFD8QA4U4eeAvnrF",
+              "As5PQrl9b3Q7jQWlSdSHBdn2qlWeeJs1ZlsdCufEdX7gxixdAqnhidL2oq43KY5fsgcEdVq6dTVPQu3T",
           },
         })
         .then((response) => {
@@ -68,8 +69,24 @@ export default {
           this.validation = error.response.data;
         });
     },
-    pinjamBuku(){
-        
+    pinjamBuku(id){
+        axios
+            .post("http://localhost:8091/api/pinjam/",{
+                    username: this.username,
+                    id_buku: id
+                },
+                {
+                params: {
+                    token: "As5PQrl9b3Q7jQWlSdSHBdn2qlWeeJs1ZlsdCufEdX7gxixdAqnhidL2oq43KY5fsgcEdVq6dTVPQu3T"
+                }
+            })
+            .then((response) => {
+                this.getBuku();
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }
   },
 };

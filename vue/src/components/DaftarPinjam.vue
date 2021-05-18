@@ -23,9 +23,9 @@
                                     <tr v-for="book in books" :key="book.id">
                                         <td>{{ book.judul }}</td>
                                         <td>{{ book.penulis }}</td>
-                                        <td>{{ book.stock }}</td>
+                                        <td>{{ book.kategori }}</td>
                                         <td class="text-center">
-                                            <b-button @click="PostReturn(book.id)" variant="primary">KEMBALIKAN BUKU</b-button>
+                                            <b-button @click="PostReturn(id_pinjam)" variant="primary">KEMBALIKAN BUKU</b-button>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -36,32 +36,61 @@
                 </div>
             </div>
         </div>
+    <!-- {{books}}
+    {{id_pinjam}} -->
     </div>
 </template>
 
-// <script>
-//     import axios from "axios";
+<script>
+    import axios from "axios";
 
-//     export default {
-//         data() {
-//             return {
-//                 books: [],
-//             };
-//         },
-//         mounted() {
-//             PostReturn(){
-//                 axios
-//                     .post('')
-//                     .then((response) => {
-//                         console.log(response.data);
-//                     })
-//                     .catch((error) => {
-//                         this.validation = error.response.data;
-//                 });
-//             }
-//         },
-//         methods: {
+    export default {
+        data() {
+            return {
+                books: [],
+                username: window.sessionStorage.getItem("username"),
+                id_pinjam: null
+            };
+        },
+        mounted() {
+            this.getPinjaman()
+        },
             
-//         }
-//     };
-// </script>
+        methods: {
+            getPinjaman(){
+                axios
+                    .get("http://localhost:8091/api/pinjam/"+ this.username,{
+                        params: {
+                            token:
+                                "As5PQrl9b3Q7jQWlSdSHBdn2qlWeeJs1ZlsdCufEdX7gxixdAqnhidL2oq43KY5fsgcEdVq6dTVPQu3T",
+                        },
+                    })
+                    .then((response) => {
+                        this.books = response.data.data
+                        this.id_pinjam = response.data.id_pinjam
+                    })
+                    .catch((error) => {
+                        this.validation = error.response.data;
+                    });
+            },
+            PostReturn(id){
+                axios
+                    .delete("http://localhost:8091/api/pinjam/"+ id,{
+                        params: {
+                            token:
+                                "As5PQrl9b3Q7jQWlSdSHBdn2qlWeeJs1ZlsdCufEdX7gxixdAqnhidL2oq43KY5fsgcEdVq6dTVPQu3T",
+                        },
+                    })
+                    .then((response) => {
+                        this.getPinjaman();
+                        this.$router.go(0)
+                        this.books.splice(this.books.indexOf(id), 1);
+                        console.log(response.data);
+                    })
+                    .catch((error) => {
+                        this.validation = error.response.data;
+                });
+            }
+        }
+    }
+</script>

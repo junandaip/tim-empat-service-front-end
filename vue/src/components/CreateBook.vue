@@ -63,10 +63,14 @@ export default {
       axios
         .post("http://localhost:8091/api/book/", this.form, {
           params: {
-            token: "7OXch6V6xJjIv88YVSn1OqmyS9aw1xEueWvlyX4F0I2OeJg0E338moCEflchPv57gFD8QA4U4eeAvnrF"
+            token: "As5PQrl9b3Q7jQWlSdSHBdn2qlWeeJs1ZlsdCufEdX7gxixdAqnhidL2oq43KY5fsgcEdVq6dTVPQu3T"
           },
         })
         .then((response) => {
+          this.$router.push({
+            name: "Index"
+          });
+          this.$router.go(0);
           console.log(response);
         })
         .catch((error) => {
