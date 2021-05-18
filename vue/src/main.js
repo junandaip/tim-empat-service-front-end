@@ -11,6 +11,7 @@ import Login from './components/auth/Login'
 import Regist from './components/auth/Regist'
 import Logout from './components/auth/Logout'
 import Home from './components/Home'
+import Index from './components/Index.vue'
 
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -43,6 +44,21 @@ const router = new VueRouter({
       path: '/logout',
       name: 'logout',
       component: Logout
+    },
+    {
+      path: '/',
+      name: 'Index',
+      component: Index
+    },
+    {
+      path: '/create',
+      name: 'Create',
+      component: CreateBook
+    },
+    {
+      path: '/pinjam',
+      name: 'Peminjaman',
+      component: PinjamBuku
     }
   ],
   mode: 'history'
