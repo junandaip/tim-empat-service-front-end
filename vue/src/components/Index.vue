@@ -15,7 +15,9 @@
                       <th>PENULIS</th>
                       <th>KATEGORI</th>
                       <th>STOCK</th>
-                      <th>AKSI</th>
+                      <div v-if="kondisi === '1'">
+                        <th>AKSI</th>
+                      </div>
                     </tr>
                   </thead>
                   <tbody>
@@ -28,11 +30,15 @@
                       <td>{{ book.penulis }}</td>
                       <td>{{ book.kategori }}</td>
                       <td>{{ book.stock }}</td>
-                      <td class="text-center">
-                        <b-button @click="pinjamBuku(book.id)" variant="primary"
-                          >Pinjam Buku</b-button
-                        >
-                      </td>
+                      <div v-if="kondisi === '1'">
+                        <td class="text-center">
+                          <b-button
+                            @click="pinjamBuku(book.id)"
+                            variant="primary"
+                            >Pinjam Buku</b-button
+                          >
+                        </td>
+                      </div>
                     </tr>
                   </tbody>
                 </table>
@@ -53,6 +59,7 @@ export default {
     return {
       books: [],
       username: window.sessionStorage.getItem("username"),
+      kondisi: window.sessionStorage.getItem("kondisi"),
     };
   },
   mounted() {
@@ -90,6 +97,8 @@ export default {
         .then((response) => {
           this.getBuku();
           console.log(response);
+          this.$router.go(0);
+          window.sessionStorage.setItem("kondisi", "0");
         })
         .catch((error) => {
           console.log(error);

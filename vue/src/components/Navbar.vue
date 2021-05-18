@@ -38,7 +38,7 @@
             >
           </li>
         </div>
-        <div v-if="kondisi === '1'">
+        <div v-if="role === '1'">
           <li class="nav-item">
             <router-link class="nav-link" :to="{ name: 'Peminjaman' }"
               >Peminjaman</router-link
