@@ -22,8 +22,8 @@ class PeminjamanController extends Controller
         if ($pinjaman) {
             $buku = Book::where('id', $pinjaman->id_buku)->first();
             return response()->json([
-                'Buku' => $buku,
-                $pinjaman
+                'data'=>['buku' => $buku],
+                'id_pinjam'=> [$pinjaman->id]
             ], 200);
         } else {
             return response()->json([

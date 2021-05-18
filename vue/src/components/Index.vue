@@ -52,6 +52,7 @@ export default {
   data() {
     return {
       books: [],
+      username: window.sessionStorage.getItem("username"),
     };
   },
   mounted() {
@@ -72,7 +73,28 @@ export default {
           this.validation = error.response.data;
         });
     },
-    pinjamBuku() {},
+    pinjamBuku(id) {
+      axios
+        .post(
+          "http://localhost:8000/api/pinjam/",
+          {
+            username: this.username,
+            id_buku: id,
+          },
+          {
+            params: {
+              token: window.sessionStorage.getItem("token"),
+            },
+          }
+        )
+        .then((response) => {
+          this.getBuku();
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
 };
 </script>

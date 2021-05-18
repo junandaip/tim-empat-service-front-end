@@ -67,6 +67,10 @@ export default {
           },
         })
         .then((response) => {
+          this.$router.push({
+            name: "Index"
+          });
+          this.$router.go(0);
           console.log(response);
         })
         .catch((error) => {
