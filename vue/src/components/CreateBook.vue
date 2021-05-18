@@ -1,17 +1,45 @@
 <template>
-  <form @submit.prevent=submitForm>
+  <form @submit.prevent="submitForm">
     <h2>Add a book</h2>
     <label>Judul Buku: </label>
-    <input type="text" name="judul" id="judul" placeholder="Judul Buku" required v-model="form.judul" />
+    <input
+      type="text"
+      name="judul"
+      id="judul"
+      placeholder="Judul Buku"
+      required
+      v-model="form.judul"
+    />
     <label>Penulis Buku: </label>
-    <input type="text" name="penulis" id="penulis" placeholder="Penulis Buku" required v-model="form.penulis" />
+    <input
+      type="text"
+      name="penulis"
+      id="penulis"
+      placeholder="Penulis Buku"
+      required
+      v-model="form.penulis"
+    />
     <label>Kategori Buku: </label>
-    <input type="text" name="kategori" id="kategori" placeholder="Kategori Buku" required v-model="form.kategori"/>
+    <input
+      type="text"
+      name="kategori"
+      id="kategori"
+      placeholder="Kategori Buku"
+      required
+      v-model="form.kategori"
+    />
     <label>Stock Buku: </label>
-    <input type="number" name="stock" id="stock" placeholder="Stock Buku" required v-model="form.stock" />
-    <br>
+    <input
+      type="number"
+      name="stock"
+      id="stock"
+      placeholder="Stock Buku"
+      required
+      v-model="form.stock"
+    />
+    <br />
     <div class="submit">
-     <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary">Submit</button>
     </div>
   </form>
 </template>
@@ -28,12 +56,16 @@ export default {
         kategori: "",
         stock: "",
       },
-    }
+    };
   },
   methods: {
-    submitForm(){
+    submitForm() {
       axios
-        .post("http://localhost:8090/book/", this.form)
+        .post("http://localhost:8091/api/book/", this.form, {
+          params: {
+            token: "7OXch6V6xJjIv88YVSn1OqmyS9aw1xEueWvlyX4F0I2OeJg0E338moCEflchPv57gFD8QA4U4eeAvnrF"
+          },
+        })
         .then((response) => {
           console.log(response);
         })
@@ -41,13 +73,13 @@ export default {
           console.log(error);
         });
     },
-  }
+  },
 };
 </script>
 
 <style>
 form {
-  max-width: 420px;
+  max-width: 520px;
   margin: 30px auto;
   background: white;
   text-align: left;
