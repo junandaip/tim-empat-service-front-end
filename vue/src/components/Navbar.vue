@@ -25,6 +25,9 @@
         <li class="nav-item">
           <router-link class="nav-link" to="/regist">Register</router-link>
         </li>
+        <li class="nav-item">
+          <router-link class="nav-link" :to="{ name: 'Create'} ">Create</router-link>
+        </li>
       </ul>
     </div>
   </nav>

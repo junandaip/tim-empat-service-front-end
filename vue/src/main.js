@@ -9,6 +9,7 @@ Vue.use(VueRouter);
 //import components
 import PostsIndex from './components/auth/Login'
 import PostsCreate from './components/auth/Regist'
+import CreateBook from './components/CreateBook.vue'
 
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -31,6 +32,11 @@ const router = new VueRouter({
       path: '/regist',
       name: 'regist',
       component: PostsCreate
+    },
+    {
+      path:'/create',
+      name: 'Create',
+      component: CreateBook
     }
   ],
   mode: 'history'
