@@ -7,8 +7,10 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter);
 
 //import components
-import PostsIndex from './components/auth/Login'
-import PostsCreate from './components/auth/Regist'
+import Login from './components/auth/Login'
+import Regist from './components/auth/Regist'
+import Logout from './components/auth/Logout'
+import Home from './components/Home'
 
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -23,14 +25,24 @@ Vue.config.productionTip = false
 const router = new VueRouter({
   routes: [
     {
+      path: '/',
+      name: 'home',
+      component: Home
+    },
+    {
       path: '/login',
       name: 'login',
-      component: PostsIndex
+      component: Login
     },
     {
       path: '/regist',
       name: 'regist',
-      component: PostsCreate
+      component: Regist
+    },
+    {
+      path: '/logout',
+      name: 'logout',
+      component: Logout
     }
   ],
   mode: 'history'

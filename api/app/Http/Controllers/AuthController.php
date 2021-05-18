@@ -104,7 +104,11 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         $session = $request->session();
-        $username = $session->get('username');
+        $this->validate($request, [
+            'username' => 'required',
+        ]);
+
+        $username = $request->input("username");
         try {
             $user = User::where("username", $username)->first();
         } catch (ModelNotFoundException $e) {

@@ -14,18 +14,38 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <router-link class="nav-link" to="/">Home</router-link>
-        </li>
+        <div v-if="username">
+          <li class="nav-item">
+            <router-link class="nav-link" to="/">Home</router-link>
+          </li>
+        </div>
       </ul>
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <router-link class="nav-link" to="/login">Login</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link class="nav-link" to="/regist">Register</router-link>
-        </li>
+        <div v-if="!username">
+          <li class="nav-item">
+            <router-link class="nav-link" to="/login">Login</router-link>
+          </li>
+        </div>
+        <div v-if="!username">
+          <li class="nav-item">
+            <router-link class="nav-link" to="/regist">Register</router-link>
+          </li>
+        </div>
+        <div v-if="username">
+          <li class="nav-item">
+            <router-link class="nav-link" to="/logout">Logout</router-link>
+          </li>
+        </div>
       </ul>
     </div>
   </nav>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      username: window.sessionStorage.getItem("username"),
+    };
+  },
+};
+</script>
