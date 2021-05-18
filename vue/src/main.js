@@ -7,10 +7,10 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter);
 
 //import components
-import PostsIndex from './components/auth/Login'
-import PostsCreate from './components/auth/Regist'
-import CreateBook from './components/CreateBook.vue'
-import PinjamBuku from './components/DaftarPinjam.vue'
+import Login from './components/auth/Login'
+import Regist from './components/auth/Regist'
+import Logout from './components/auth/Logout'
+import Home from './components/Home'
 import Index from './components/Index.vue'
 
 import 'bootstrap'
@@ -26,14 +26,24 @@ Vue.config.productionTip = false
 const router = new VueRouter({
   routes: [
     {
+      path: '/',
+      name: 'home',
+      component: Home
+    },
+    {
       path: '/login',
       name: 'login',
-      component: PostsIndex
+      component: Login
     },
     {
       path: '/regist',
       name: 'regist',
-      component: PostsCreate
+      component: Regist
+    },
+    {
+      path: '/logout',
+      name: 'logout',
+      component: Logout
     },
     {
       path: '/',
@@ -41,12 +51,12 @@ const router = new VueRouter({
       component: Index
     },
     {
-      path:'/create',
+      path: '/create',
       name: 'Create',
       component: CreateBook
     },
     {
-      path:'/pinjam',
+      path: '/pinjam',
       name: 'Peminjaman',
       component: PinjamBuku
     }
