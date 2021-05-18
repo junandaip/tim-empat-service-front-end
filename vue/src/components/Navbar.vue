@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <router-link class="navbar-brand" to="/">Kunglao Library</router-link>
+    <router-link class="navbar-brand" to="">Kunglao Library</router-link>
     <button
       class="navbar-toggler"
       type="button"
@@ -44,11 +44,11 @@
           </li>
         </div>
         <div v-if="username">
-          <li class="nav-item">
-            <router-link class="nav-link" :to="{ name: 'Peminjaman' }"
-              >Peminjaman</router-link
-            >
-          </li>
+        <li class="nav-item">
+          <router-link class="nav-link" :to="{ name: 'Peminjaman' }"
+            >Peminjaman</router-link
+          >
+        </li>
         </div>
       </ul>
     </div>
