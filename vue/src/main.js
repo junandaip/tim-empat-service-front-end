@@ -10,6 +10,8 @@ Vue.use(VueRouter);
 import PostsIndex from './components/auth/Login'
 import PostsCreate from './components/auth/Regist'
 import CreateBook from './components/CreateBook.vue'
+import PinjamBuku from './components/DaftarPinjam.vue'
+import Index from './components/Index.vue'
 
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -34,9 +36,19 @@ const router = new VueRouter({
       component: PostsCreate
     },
     {
+      path: '/',
+      name: 'Index',
+      component: Index
+    },
+    {
       path:'/create',
       name: 'Create',
       component: CreateBook
+    },
+    {
+      path:'/pinjam',
+      name: 'Peminjaman',
+      component: PinjamBuku
     }
   ],
   mode: 'history'
