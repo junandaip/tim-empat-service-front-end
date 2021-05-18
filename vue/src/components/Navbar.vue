@@ -16,7 +16,7 @@
       <ul class="navbar-nav mr-auto">
         <div v-if="username">
           <li class="nav-item">
-            <router-link class="nav-link" to="/">Home</router-link>
+            <router-link class="nav-link">Home</router-link>
           </li>
         </div>
       </ul>
@@ -31,23 +31,23 @@
             <router-link class="nav-link" to="/regist">Register</router-link>
           </li>
         </div>
-        <div v-if="username">
-          <li class="nav-item">
-            <router-link class="nav-link" to="/logout">Logout</router-link>
-          </li>
-        </div>
-        <div v-if="username">
+        <div v-if="role === '2'">
           <li class="nav-item">
             <router-link class="nav-link" :to="{ name: 'Create' }"
               >Create</router-link
             >
           </li>
         </div>
-        <div v-if="username">
+        <div v-if="kondisi === '1'">
           <li class="nav-item">
             <router-link class="nav-link" :to="{ name: 'Peminjaman' }"
               >Peminjaman</router-link
             >
+          </li>
+        </div>
+        <div v-if="username">
+          <li class="nav-item">
+            <router-link class="nav-link" to="/logout">Logout</router-link>
           </li>
         </div>
       </ul>
@@ -59,6 +59,8 @@ export default {
   data() {
     return {
       username: window.sessionStorage.getItem("username"),
+      role: window.sessionStorage.getItem("role"),
+      kondisi: window.sessionStorage.getItem("kondisi"),
     };
   },
 };

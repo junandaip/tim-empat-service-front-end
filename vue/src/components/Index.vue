@@ -10,7 +10,7 @@
               <div class="table-responsive mt-2">
                 <table class="table table-hover table-bordered">
                   <thead>
-                    <tr style='text-align:center; vertical-align:middle'>
+                    <tr style="text-align: center; vertical-align: middle">
                       <th>JUDUL</th>
                       <th>PENULIS</th>
                       <th>KATEGORI</th>
@@ -19,14 +19,19 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="book in books" :key="book.id" style='text-align:center; vertical-align:middle'>
+                    <tr
+                      v-for="book in books"
+                      :key="book.id"
+                      style="text-align: center; vertical-align: middle"
+                    >
                       <td>{{ book.judul }}</td>
                       <td>{{ book.penulis }}</td>
                       <td>{{ book.kategori }}</td>
                       <td>{{ book.stock }}</td>
                       <td class="text-center">
                         <b-button @click="pinjamBuku(book.id)" variant="primary"
-                          >Pinjam Buku</b-button>
+                          >Pinjam Buku</b-button
+                        >
                       </td>
                     </tr>
                   </tbody>
@@ -55,22 +60,19 @@ export default {
   methods: {
     getBuku() {
       axios
-        .get("http://localhost:8091/api/book", {
+        .get("http://localhost:8000/api/book", {
           params: {
-            token:
-              "7OXch6V6xJjIv88YVSn1OqmyS9aw1xEueWvlyX4F0I2OeJg0E338moCEflchPv57gFD8QA4U4eeAvnrF",
+            token: window.sessionStorage.getItem("token"),
           },
         })
         .then((response) => {
-            this.books = response.data
+          this.books = response.data;
         })
         .catch((error) => {
           this.validation = error.response.data;
         });
     },
-    pinjamBuku(){
-        
-    }
+    pinjamBuku() {},
   },
 };
 </script>

@@ -74,20 +74,22 @@ export default {
   methods: {
     Login() {
       axios
-        .post("http://localhost:8091/api/login", this.post)
+        .post("http://localhost:8000/api/login", this.post)
         .then((response) => {
           this.$router.push({
             name: "Home",
           });
           this.$router.go();
-          console.log(response.data.result);
+          console.log(response.data.result.token);
+          console.log(response.data.result.kondisi);
+          console.log(response.data.result.role);
           window.sessionStorage.setItem("username", this.post.username);
+          window.sessionStorage.setItem("token", response.data.result.token);
           window.sessionStorage.setItem(
-            "token",
-            JSON.stringify(this.response.data.result.token)
+            "kondisi",
+            response.data.result.kondisi
           );
-          console.log(window.sessionStorage.getItem("username"));
-          console.log(window.sessionStorage.getItem("token"));
+          window.sessionStorage.setItem("role", response.data.result.role);
         })
         .catch((error) => {
           this.validation = error.response.data;

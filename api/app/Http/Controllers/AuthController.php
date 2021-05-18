@@ -86,6 +86,8 @@ class AuthController extends Controller
                 "code"    => 200,
                 "result"  => [
                     "token" => $newtoken,
+                    "kondisi" => $user->kondisi,
+                    "role" => $user->role,
                 ]
             ];
         } else {

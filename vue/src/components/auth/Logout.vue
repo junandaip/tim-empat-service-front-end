@@ -29,7 +29,7 @@ export default {
   methods: {
     Logout() {
       axios
-        .post("http://localhost:8091/api/logout", {
+        .post("http://localhost:8000/api/logout", {
           username: this.username,
         })
         .then((response) => {
@@ -40,6 +40,8 @@ export default {
           console.log(response.data.data);
           window.sessionStorage.removeItem("username");
           window.sessionStorage.removeItem("token");
+          window.sessionStorage.removeItem("kondisi");
+          window.sessionStorage.removeItem("role");
           console.log(window.sessionStorage.getItem("username"));
         })
         .catch((error) => {
