@@ -42,8 +42,13 @@ const router = new VueRouter({
       component: Logout
     },
     {
+<<<<<<< HEAD
       path: '/',
       name: 'Home',
+=======
+      path: '/index',
+      name: 'Index',
+>>>>>>> 2520d9f3ab0f66c251a6f5a3fb2c441c0163ce43
       component: Index
     },
     {
