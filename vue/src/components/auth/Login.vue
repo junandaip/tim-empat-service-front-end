@@ -74,10 +74,10 @@ export default {
   methods: {
     Login() {
       axios
-        .post("http://localhost:8000/api/login", this.post)
+        .post("http://localhost:8091/api/login", this.post)
         .then((response) => {
           this.$router.push({
-            name: "home",
+            name: "Home",
           });
           this.$router.go();
           console.log(response.data.result);

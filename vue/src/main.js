@@ -10,8 +10,9 @@ Vue.use(VueRouter);
 import Login from './components/auth/Login'
 import Regist from './components/auth/Regist'
 import Logout from './components/auth/Logout'
-import Home from './components/Home'
 import Index from './components/Index.vue'
+import CreateBook from './components/CreateBook.vue'
+import PinjamBuku from './components/DaftarPinjam.vue'
 
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -25,11 +26,6 @@ Vue.config.productionTip = false
 
 const router = new VueRouter({
   routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: Home
-    },
     {
       path: '/login',
       name: 'login',
