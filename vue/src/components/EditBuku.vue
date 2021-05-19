@@ -39,11 +39,15 @@
                 v-model="books.stock"
             />
             <br />
-            <div class="submit">
+            <!-- <div class="submit">
                 <button type="submit" class="btn btn-primary">Submit</button>
+            </div> -->
+            <div class="submit" >
+                <button type="submit" class="btn btn-md btn-success mx-3">Update</button>
+                <a class="btn btn-danger" href="/" role="button">Cancel</a>
             </div>
         </form>
-    {{books}}
+    <!-- {{books}} -->
     </div>
 </template>
 
@@ -57,7 +61,7 @@ export default {
     };
   },
   created(){
-      axios.get(`http://localhost:8000/api/book/id/${this.$route.params.id}`, {
+      axios.get(`http://localhost:8091/api/book/id/${this.$route.params.id}`, {
           params: {
               token: window.sessionStorage.getItem("token"),
           },
@@ -69,7 +73,7 @@ export default {
   methods: {
     submitForm() {
       axios
-        .put(`http://localhost:8000/api/book/${this.$route.params.id}`, this.books, {
+        .put(`http://localhost:8091/api/book/${this.$route.params.id}`, this.books, {
           params: {
             token: window.sessionStorage.getItem("token"),
           },
@@ -127,4 +131,5 @@ button {
 .submit {
   text-align: center;
 }
+
 </style>

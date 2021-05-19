@@ -45,7 +45,7 @@
                         <td class="text-center">
                           <router-link
                             :to="{ name: 'Edit', params: { id: book.id } }"
-                            class="btn btn-sm btn-success mr-2"
+                            class="btn btn-sm btn-success mx-2"
                             >Edit</router-link
                           >
                           <button
@@ -86,7 +86,7 @@ export default {
   methods: {
     getBuku() {
       axios
-        .get("http://localhost:8000/api/book", {
+        .get("http://localhost:8091/api/book", {
           params: {
             token: window.sessionStorage.getItem("token"),
           },
@@ -101,7 +101,7 @@ export default {
     pinjamBuku(id) {
       axios
         .post(
-          "http://localhost:8000/api/pinjam/",
+          "http://localhost:8091/api/pinjam/",
           {
             username: this.username,
             id_buku: id,
@@ -125,7 +125,7 @@ export default {
     PostDelete(id) {
       if (confirm("Hapus Buku?")) {
         axios
-          .delete("http://localhost:8000/api/book/" + id, {
+          .delete("http://localhost:8091/api/book/" + id, {
             params: {
               token: window.sessionStorage.getItem("token"),
             },

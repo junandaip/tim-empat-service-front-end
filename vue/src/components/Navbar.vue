@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <router-link class="navbar-brand" to="/">Kunglao Library</router-link>
+    <router-link class="navbar-brand mx-3" to="/">Kunglao Library</router-link>
     <button
       class="navbar-toggler"
       type="button"
@@ -88,7 +88,7 @@ export default {
     },
     Logout() {
       axios
-        .post("http://localhost:8000/api/logout", {
+        .post("http://localhost:8091/api/logout", {
           username: this.username,
         })
         .then((response) => {
