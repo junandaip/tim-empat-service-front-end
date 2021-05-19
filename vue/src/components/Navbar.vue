@@ -47,7 +47,22 @@
         </div>
         <div v-if="username">
           <li class="nav-item">
-            <router-link class="nav-link" to="/logout">Logout</router-link>
+            <!-- <router-link class="nav-link" to="/logout">Logout</router-link> -->
+            <b-button
+              class="text-decoration-none"
+              style="color: #4d4d4d"
+              variant="link"
+              id="show-btn"
+              @click="showModal"
+              >Logout</b-button
+            >
+
+            <b-modal ref="my-modal" hide-footer title="Yakin mau Logout ?">
+              <b-button block variant="primary" @click="hideModal"
+                >Close</b-button
+              >
+              <b-button block variant="danger" @click="Logout">Logout</b-button>
+            </b-modal>
           </li>
         </div>
       </ul>
@@ -55,6 +70,7 @@
   </nav>
 </template>
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
@@ -62,6 +78,35 @@ export default {
       role: window.sessionStorage.getItem("role"),
       kondisi: window.sessionStorage.getItem("kondisi"),
     };
+  },
+  methods: {
+    showModal() {
+      this.$refs["my-modal"].show();
+    },
+    hideModal() {
+      this.$refs["my-modal"].hide();
+    },
+    Logout() {
+      axios
+        .post("http://localhost:8000/api/logout", {
+          username: this.username,
+        })
+        .then((response) => {
+          console.log(response.data.data);
+          window.sessionStorage.removeItem("username");
+          window.sessionStorage.removeItem("token");
+          window.sessionStorage.removeItem("kondisi");
+          window.sessionStorage.removeItem("role");
+          console.log(window.sessionStorage.getItem("username"));
+          this.$router.push({
+            name: "login",
+          });
+          this.$router.go();
+        })
+        .catch((error) => {
+          this.validation = error.response.data.data;
+        });
+    },
   },
 };
 </script>

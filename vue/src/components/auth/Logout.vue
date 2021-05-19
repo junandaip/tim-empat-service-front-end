@@ -29,7 +29,7 @@ export default {
   methods: {
     Logout() {
       axios
-        .post("http://localhost:8091/api/logout", {
+        .post("http://localhost:8000/api/logout", {
           username: this.username,
         })
         .then((response) => {

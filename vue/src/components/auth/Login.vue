@@ -74,7 +74,7 @@ export default {
   methods: {
     Login() {
       axios
-        .post("http://localhost:8091/api/login", this.post)
+        .post("http://localhost:8000/api/login", this.post)
         .then((response) => {
           console.log(response.data.result.token);
           console.log(response.data.result.kondisi);

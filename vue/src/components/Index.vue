@@ -21,11 +21,11 @@
                     </tr>
                   </thead>
                   <tbody>
-                      <tr
-                        v-for="book in books"
-                        :key="book.id"
-                        style="text-align: center; vertical-align: middle"
-                      >
+                    <tr
+                      v-for="book in books"
+                      :key="book.id"
+                      style="text-align: center; vertical-align: middle"
+                    >
                       <td>{{ book.judul }}</td>
                       <td>{{ book.penulis }}</td>
                       <td>{{ book.kategori }}</td>
@@ -78,7 +78,7 @@ export default {
       books: [],
       username: window.sessionStorage.getItem("username"),
       kondisi: window.sessionStorage.getItem("kondisi"),
-      role: window.sessionStorage.getItem("role")
+      role: window.sessionStorage.getItem("role"),
     };
   },
   mounted() {
@@ -87,7 +87,7 @@ export default {
   methods: {
     getBuku() {
       axios
-        .get("http://localhost:8091/api/book", {
+        .get("http://localhost:8000/api/book", {
           params: {
             token: window.sessionStorage.getItem("token"),
           },
