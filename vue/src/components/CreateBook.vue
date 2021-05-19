@@ -37,7 +37,7 @@
       required
       v-model="form.stock"
     />
-    <br />
+    <br/>
     <div class="submit">
       <button type="submit" class="btn btn-primary">Submit</button>
     </div>
@@ -63,10 +63,14 @@ export default {
       axios
         .post("http://localhost:8091/api/book/", this.form, {
           params: {
-            token: "td5kMWM9auEf87FCvzRXWEvNK8d52oXghJYCCdQJysGv9xQy0vvbzs1cg2NZ0ykfd5aIrvsigHAN7EnN"
+            token: window.sessionStorage.getItem("token"),
           },
         })
         .then((response) => {
+          this.$router.push({
+            name: "Index"
+          });
+          this.$router.go(0);
           console.log(response);
         })
         .catch((error) => {

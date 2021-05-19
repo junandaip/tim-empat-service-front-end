@@ -37,21 +37,13 @@
               <br />
               <div class="row">
                 <div class="col">
-                  <button type="submit" class="btn btn-md btn-primary mr-2">
-                    Login
-                  </button>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="inlineFormCheck"/>
+                    <label class="form-check-label mb-3" for="inlineFormCheck">Remember me</label>
+                  </div>
                 </div>
                 <div class="col">
-                  <div class="form-check mb-2 mr-sm-2">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="inlineFormCheck"
-                    />
-                    <label class="form-check-label" for="inlineFormCheck">
-                      Remember me
-                    </label>
-                  </div>
+                  <button type="submit" class="btn btn-md btn-primary mr-2 pull-right">Login</button>
                 </div>
               </div>
             </form>
@@ -76,18 +68,20 @@ export default {
       axios
         .post("http://localhost:8091/api/login", this.post)
         .then((response) => {
+          console.log(response.data.result.token);
+          console.log(response.data.result.kondisi);
+          console.log(response.data.result.role);
+          window.sessionStorage.setItem("username", this.post.username);
+          window.sessionStorage.setItem("token", response.data.result.token);
+          window.sessionStorage.setItem(
+            "kondisi",
+            response.data.result.kondisi
+          );
+          window.sessionStorage.setItem("role", response.data.result.role);
           this.$router.push({
             name: "Home",
           });
           this.$router.go();
-          console.log(response.data.result);
-          window.sessionStorage.setItem("username", this.post.username);
-          window.sessionStorage.setItem(
-            "token",
-            JSON.stringify(this.response.data.result.token)
-          );
-          console.log(window.sessionStorage.getItem("username"));
-          console.log(window.sessionStorage.getItem("token"));
         })
         .catch((error) => {
           this.validation = error.response.data;

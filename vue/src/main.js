@@ -13,6 +13,7 @@ import Logout from './components/auth/Logout'
 import Index from './components/Index.vue'
 import CreateBook from './components/CreateBook.vue'
 import PinjamBuku from './components/DaftarPinjam.vue'
+import EditBuku from './components/EditBuku.vue'
 
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -29,7 +30,7 @@ const router = new VueRouter({
     {
       path: '/login',
       name: 'login',
-      component: Login
+      component: Login,
     },
     {
       path: '/regist',
@@ -39,26 +40,58 @@ const router = new VueRouter({
     {
       path: '/logout',
       name: 'logout',
-      component: Logout
+      component: Logout,
+      meta: {
+        auth: true,
+      },
     },
     {
       path: '/',
       name: 'Home',
-      component: Index
+      component: Index,
+      meta: {
+        auth: true,
+      },
     },
     {
       path: '/create',
       name: 'Create',
-      component: CreateBook
+      component: CreateBook,
+      meta: {
+        auth: true,
+      },
     },
     {
       path: '/pinjam',
       name: 'Peminjaman',
-      component: PinjamBuku
-    }
+      component: PinjamBuku,
+      meta: {
+        auth: true,
+      },
+    },
+    {
+      path: '/edit',
+      name: 'Edit',
+      component: EditBuku,
+      meta: {
+        auth: true,
+      },
+    },
   ],
   mode: 'history'
-})
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.auth) {
+    if (!sessionStorage.getItem("token")) {
+      next("/login");
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
+});
 
 new Vue({
   router,
