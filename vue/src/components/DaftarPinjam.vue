@@ -61,7 +61,7 @@ export default {
   methods: {
     getPinjaman() {
       axios
-        .get("http://localhost:8091/api/pinjam/" + this.username, {
+        .get("http://localhost:9000/api/pinjam/" + this.username, {
           params: {
             token: window.sessionStorage.getItem("token"),
           },
@@ -76,7 +76,7 @@ export default {
     },
     PostReturn(id) {
       axios
-        .delete("http://localhost:8091/api/pinjam/" + id, {
+        .delete("http://localhost:9000/api/pinjam/" + id, {
           params: {
             token: window.sessionStorage.getItem("token"),
           },

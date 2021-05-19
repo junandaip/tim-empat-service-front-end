@@ -88,7 +88,7 @@ export default {
     },
     Logout() {
       axios
-        .post("http://localhost:8091/api/logout", {
+        .post("http://localhost:9000/api/logout", {
           username: this.username,
         })
         .then((response) => {
