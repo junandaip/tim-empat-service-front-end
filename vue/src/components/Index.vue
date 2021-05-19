@@ -42,20 +42,12 @@
                         </div>
                       </div>
                       <div v-if="role === '2'">
-                        <div v-if="kondisi === '1'">
                           <td class="text-center">
-                            <b-button
-                              @click="editBuku(book.id)"
-                              variant="success"
-                              >Edit</b-button
-                            >
-                            <b-button
-                              @click="hapusBuku(book.id)"
-                              variant="danger"
-                              >Hapus</b-button
-                            >
+                            <router-link :to="{name: 'Edit', params: {id: book.id}}"
+                              class="btn btn-sm btn-success mr-2">Edit</router-link>
+                            <button @click="PostDelete(book.id)"
+                              class="btn btn-sm btn-danger">Hapus</button>
                           </td>
-                        </div>
                       </div>
                     </tr>
                   </tbody>

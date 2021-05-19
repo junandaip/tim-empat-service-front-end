@@ -13,6 +13,7 @@ import Logout from './components/auth/Logout'
 import Index from './components/Index.vue'
 import CreateBook from './components/CreateBook.vue'
 import PinjamBuku from './components/DaftarPinjam.vue'
+import EditBuku from './components/EditBuku.vue'
 
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -67,7 +68,15 @@ const router = new VueRouter({
       meta: {
         auth: true,
       },
-    }
+    },
+    {
+      path: '/edit',
+      name: 'Edit',
+      component: EditBuku,
+      meta: {
+        auth: true,
+      },
+    },
   ],
   mode: 'history'
 });

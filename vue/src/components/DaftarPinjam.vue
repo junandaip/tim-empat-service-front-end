@@ -18,7 +18,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="book in books" :key="book.id">
+                    <tr v-for="book in books" :key="book.id" style="text-align: center; vertical-align: middle">
                       <td>{{ book.judul }}</td>
                       <td>{{ book.penulis }}</td>
                       <td>{{ book.kategori }}</td>
