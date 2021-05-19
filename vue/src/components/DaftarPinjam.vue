@@ -32,9 +32,6 @@
                     </tr>
                   </tbody>
                 </table>
-                <p>id_pinjam : {{ id_pinjam }}</p>
-                <p>books : {{ books }}</p>
-
               </div>
             </div>
           </div>

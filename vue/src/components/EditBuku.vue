@@ -67,7 +67,7 @@ export default {
           },
       })
       .then((response) => {
-        this.books = response.data.data
+        this.books = response.data.result.data
       });
   },
   methods: {
