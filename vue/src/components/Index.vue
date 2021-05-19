@@ -42,12 +42,19 @@
                         </div>
                       </div>
                       <div v-if="role === '2'">
-                          <td class="text-center">
-                            <router-link :to="{name: 'Edit', params: {id: book.id}}"
-                              class="btn btn-sm btn-success mr-2">Edit</router-link>
-                            <button @click="PostDelete(book.id)"
-                              class="btn btn-sm btn-danger">Hapus</button>
-                          </td>
+                        <td class="text-center">
+                          <router-link
+                            :to="{ name: 'Edit', params: { id: book.id } }"
+                            class="btn btn-sm btn-success mr-2"
+                            >Edit</router-link
+                          >
+                          <button
+                            @click="PostDelete(book.id)"
+                            class="btn btn-sm btn-danger"
+                          >
+                            Hapus
+                          </button>
+                        </td>
                       </div>
                     </tr>
                   </tbody>
@@ -114,6 +121,26 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+    },
+    PostDelete(id) {
+      if (confirm("Hapus Buku?")) {
+        axios
+          .delete("http://localhost:8000/api/book/" + id, {
+            params: {
+              token: window.sessionStorage.getItem("token"),
+            },
+          })
+          .then((response) => {
+            this.$router.push({
+              name: "Home",
+            });
+            this.books.splice(this.books.indexOf(id), 1);
+            console.log(response.data);
+          })
+          .catch((error) => {
+            this.validation = error.response.data;
+          });
+      }
     },
   },
 };
