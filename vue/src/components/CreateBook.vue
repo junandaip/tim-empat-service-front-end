@@ -37,7 +37,7 @@
       required
       v-model="form.stock"
     />
-    <br />
+    <br/>
     <div class="submit">
       <button type="submit" class="btn btn-primary">Submit</button>
     </div>
