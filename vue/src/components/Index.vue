@@ -31,13 +31,18 @@
                       <td>{{ book.kategori }}</td>
                       <td>{{ book.stock }}</td>
                       <div v-if="role === '1'">
-                        <div v-if="kondisi === '1'">
+                        <div v-if="kondisi === '1' && book.stock > 0">
                           <td class="text-center">
                             <b-button
                               @click="pinjamBuku(book.id)"
                               variant="primary"
                               >Pinjam Buku</b-button
                             >
+                          </td>
+                        </div>
+                        <div v-if="kondisi === '1' && book.stock == 0">
+                          <td class="text-center">
+                            <b-button disabled variant="secondary">Stok Habis</b-button>
                           </td>
                         </div>
                       </div>
@@ -86,7 +91,11 @@ export default {
   methods: {
     getBuku() {
       axios
+<<<<<<< HEAD
         .get("http://localhost:9000/api/book", {
+=======
+        .get("http://localhost:8000/api/book", {
+>>>>>>> 31ad1ef5cb8f4eeecf5d3372577b1b445721cdb2
           params: {
             token: window.sessionStorage.getItem("token"),
           },
@@ -101,7 +110,11 @@ export default {
     pinjamBuku(id) {
       axios
         .post(
+<<<<<<< HEAD
           "http://localhost:9000/api/pinjam/",
+=======
+          "http://localhost:8000/api/pinjam/",
+>>>>>>> 31ad1ef5cb8f4eeecf5d3372577b1b445721cdb2
           {
             username: this.username,
             id_buku: id,
@@ -125,7 +138,11 @@ export default {
     PostDelete(id) {
       if (confirm("Hapus Buku?")) {
         axios
+<<<<<<< HEAD
           .delete("http://localhost:9000/api/book/" + id, {
+=======
+          .delete("http://localhost:8000/api/book/" + id, {
+>>>>>>> 31ad1ef5cb8f4eeecf5d3372577b1b445721cdb2
             params: {
               token: window.sessionStorage.getItem("token"),
             },

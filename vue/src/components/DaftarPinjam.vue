@@ -61,7 +61,11 @@ export default {
   methods: {
     getPinjaman() {
       axios
+<<<<<<< HEAD
         .get("http://localhost:9000/api/pinjam/" + this.username, {
+=======
+        .get("http://localhost:8000/api/pinjam/" + this.username, {
+>>>>>>> 31ad1ef5cb8f4eeecf5d3372577b1b445721cdb2
           params: {
             token: window.sessionStorage.getItem("token"),
           },
@@ -76,7 +80,11 @@ export default {
     },
     PostReturn(id) {
       axios
+<<<<<<< HEAD
         .delete("http://localhost:9000/api/pinjam/" + id, {
+=======
+        .delete("http://localhost:8000/api/pinjam/" + id, {
+>>>>>>> 31ad1ef5cb8f4eeecf5d3372577b1b445721cdb2
           params: {
             token: window.sessionStorage.getItem("token"),
           },

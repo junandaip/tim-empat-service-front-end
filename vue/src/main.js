@@ -9,7 +9,6 @@ Vue.use(VueRouter);
 //import components
 import Login from './components/auth/Login'
 import Regist from './components/auth/Regist'
-import Logout from './components/auth/Logout'
 import Index from './components/Index.vue'
 import CreateBook from './components/CreateBook.vue'
 import PinjamBuku from './components/DaftarPinjam.vue'
@@ -36,14 +35,6 @@ const router = new VueRouter({
       path: '/regist',
       name: 'regist',
       component: Regist
-    },
-    {
-      path: '/logout',
-      name: 'logout',
-      component: Logout,
-      meta: {
-        auth: true,
-      },
     },
     {
       path: '/',
