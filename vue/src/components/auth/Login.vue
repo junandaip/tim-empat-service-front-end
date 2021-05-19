@@ -68,16 +68,16 @@ export default {
       axios
         .post("http://localhost:9000/api/login", this.post)
         .then((response) => {
-          console.log(response.data.result.token);
-          console.log(response.data.result.kondisi);
-          console.log(response.data.result.role);
+          console.log(response.data.result.result.token);
+          console.log(response.data.result.result.kondisi);
+          console.log(response.data.result.result.role);
           window.sessionStorage.setItem("username", this.post.username);
-          window.sessionStorage.setItem("token", response.data.result.token);
+          window.sessionStorage.setItem("token", response.data.result.result.token);
           window.sessionStorage.setItem(
             "kondisi",
-            response.data.result.kondisi
+            response.data.result.result.kondisi
           );
-          window.sessionStorage.setItem("role", response.data.result.role);
+          window.sessionStorage.setItem("role", response.data.result.result.role);
           this.$router.push({
             name: "Home",
           });

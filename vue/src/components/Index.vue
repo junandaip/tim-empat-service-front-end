@@ -64,6 +64,11 @@
                     </tr>
                   </tbody>
                 </table>
+                <p>token : {{ token }} </p>
+                <p>username : {{ username }} </p>
+                <p>kondisi : {{ kondisi }} </p>
+                <p>role : {{ role }} </p>
+
               </div>
             </div>
           </div>
@@ -79,6 +84,7 @@ import axios from "axios";
 export default {
   data() {
     return {
+      token: sessionStorage.getItem("token"),
       books: [],
       username: window.sessionStorage.getItem("username"),
       kondisi: window.sessionStorage.getItem("kondisi"),
@@ -91,17 +97,13 @@ export default {
   methods: {
     getBuku() {
       axios
-<<<<<<< HEAD
         .get("http://localhost:9000/api/book", {
-=======
-        .get("http://localhost:8000/api/book", {
->>>>>>> 31ad1ef5cb8f4eeecf5d3372577b1b445721cdb2
           params: {
-            token: window.sessionStorage.getItem("token"),
+            token: window.sessionStorage.getItem("token")
           },
         })
         .then((response) => {
-          this.books = response.data;
+          this.books = response.data.result;
         })
         .catch((error) => {
           this.validation = error.response.data;
@@ -110,11 +112,7 @@ export default {
     pinjamBuku(id) {
       axios
         .post(
-<<<<<<< HEAD
           "http://localhost:9000/api/pinjam/",
-=======
-          "http://localhost:8000/api/pinjam/",
->>>>>>> 31ad1ef5cb8f4eeecf5d3372577b1b445721cdb2
           {
             username: this.username,
             id_buku: id,
@@ -138,11 +136,7 @@ export default {
     PostDelete(id) {
       if (confirm("Hapus Buku?")) {
         axios
-<<<<<<< HEAD
           .delete("http://localhost:9000/api/book/" + id, {
-=======
-          .delete("http://localhost:8000/api/book/" + id, {
->>>>>>> 31ad1ef5cb8f4eeecf5d3372577b1b445721cdb2
             params: {
               token: window.sessionStorage.getItem("token"),
             },

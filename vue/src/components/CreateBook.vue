@@ -61,11 +61,7 @@ export default {
   methods: {
     submitForm() {
       axios
-<<<<<<< HEAD
         .post("http://localhost:9000/api/book/", this.form, {
-=======
-        .post("http://localhost:8000/api/book/", this.form, {
->>>>>>> 31ad1ef5cb8f4eeecf5d3372577b1b445721cdb2
           params: {
             token: window.sessionStorage.getItem("token"),
           },

@@ -61,11 +61,7 @@ export default {
     };
   },
   created(){
-<<<<<<< HEAD
       axios.get(`http://localhost:9000/api/book/id/${this.$route.params.id}`, {
-=======
-      axios.get(`http://localhost:8000/api/book/id/${this.$route.params.id}`, {
->>>>>>> 31ad1ef5cb8f4eeecf5d3372577b1b445721cdb2
           params: {
               token: window.sessionStorage.getItem("token"),
           },
@@ -77,11 +73,7 @@ export default {
   methods: {
     submitForm() {
       axios
-<<<<<<< HEAD
         .put(`http://localhost:9000/api/book/${this.$route.params.id}`, this.books, {
-=======
-        .put(`http://localhost:8000/api/book/${this.$route.params.id}`, this.books, {
->>>>>>> 31ad1ef5cb8f4eeecf5d3372577b1b445721cdb2
           params: {
             token: window.sessionStorage.getItem("token"),
           },

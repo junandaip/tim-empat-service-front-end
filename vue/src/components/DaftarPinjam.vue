@@ -32,6 +32,9 @@
                     </tr>
                   </tbody>
                 </table>
+                <p>id_pinjam : {{ id_pinjam }}</p>
+                <p>books : {{ books }}</p>
+
               </div>
             </div>
           </div>
@@ -61,18 +64,14 @@ export default {
   methods: {
     getPinjaman() {
       axios
-<<<<<<< HEAD
         .get("http://localhost:9000/api/pinjam/" + this.username, {
-=======
-        .get("http://localhost:8000/api/pinjam/" + this.username, {
->>>>>>> 31ad1ef5cb8f4eeecf5d3372577b1b445721cdb2
           params: {
             token: window.sessionStorage.getItem("token"),
           },
         })
         .then((response) => {
-          this.books = response.data.data;
-          this.id_pinjam = response.data.id_pinjam;
+          this.books = response.data.result.Buku;
+          this.id_pinjam = response.data.result.id_pinjam;
         })
         .catch((error) => {
           this.validation = error.response.data;
@@ -80,11 +79,7 @@ export default {
     },
     PostReturn(id) {
       axios
-<<<<<<< HEAD
         .delete("http://localhost:9000/api/pinjam/" + id, {
-=======
-        .delete("http://localhost:8000/api/pinjam/" + id, {
->>>>>>> 31ad1ef5cb8f4eeecf5d3372577b1b445721cdb2
           params: {
             token: window.sessionStorage.getItem("token"),
           },

@@ -68,11 +68,7 @@ export default {
   methods: {
     Register() {
       axios
-<<<<<<< HEAD
         .post("http://localhost:9000/api/register", this.post)
-=======
-        .post("http://localhost:8000/api/register", this.post)
->>>>>>> 31ad1ef5cb8f4eeecf5d3372577b1b445721cdb2
         .then((response) => {
           this.$router.push({
             name: "login",
