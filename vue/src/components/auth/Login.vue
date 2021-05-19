@@ -37,21 +37,13 @@
               <br />
               <div class="row">
                 <div class="col">
-                  <button type="submit" class="btn btn-md btn-primary mr-2">
-                    Login
-                  </button>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="inlineFormCheck"/>
+                    <label class="form-check-label mb-3" for="inlineFormCheck">Remember me</label>
+                  </div>
                 </div>
                 <div class="col">
-                  <div class="form-check mb-2 mr-sm-2">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="inlineFormCheck"
-                    />
-                    <label class="form-check-label" for="inlineFormCheck">
-                      Remember me
-                    </label>
-                  </div>
+                  <button type="submit" class="btn btn-md btn-primary mr-2 pull-right">Login</button>
                 </div>
               </div>
             </form>

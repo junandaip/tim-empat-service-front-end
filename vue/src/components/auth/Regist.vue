@@ -36,16 +36,17 @@
               </div>
               <br />
               <div class="row">
+                <div class="col" style="text-align: left">
+                  <router-link class="nav-link" to="/login"
+                    >Sudah punya akun?</router-link
+                  >
+                </div>
                 <div class="col">
-                  <button type="submit" class="btn btn-md btn-primary mr-2">
+                  <button type="submit" class="btn btn-md btn-primary mr-2 pull-right">
                     Register
                   </button>
                 </div>
-                <div class="col-8" style="text-align: right">
-                  <router-link class="nav-link" to="/login"
-                    >already have an account?</router-link
-                  >
-                </div>
+                
               </div>
             </form>
           </div>

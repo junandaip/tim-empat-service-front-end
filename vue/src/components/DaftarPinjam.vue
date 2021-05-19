@@ -10,7 +10,7 @@
               <div class="table-responsive mt-2">
                 <table class="table table-hover table-bordered">
                   <thead>
-                    <tr>
+                    <tr style="text-align: center; vertical-align: middle">
                       <th>JUDUL</th>
                       <th>PENULIS</th>
                       <th>KATEGORI</th>
