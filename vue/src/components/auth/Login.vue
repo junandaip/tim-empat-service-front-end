@@ -76,10 +76,6 @@ export default {
       axios
         .post("http://localhost:8000/api/login", this.post)
         .then((response) => {
-          this.$router.push({
-            name: "Home",
-          });
-          this.$router.go();
           console.log(response.data.result.token);
           console.log(response.data.result.kondisi);
           console.log(response.data.result.role);
@@ -90,6 +86,10 @@ export default {
             response.data.result.kondisi
           );
           window.sessionStorage.setItem("role", response.data.result.role);
+          this.$router.push({
+            name: "Home",
+          });
+          this.$router.go();
         })
         .catch((error) => {
           this.validation = error.response.data;

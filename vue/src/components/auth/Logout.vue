@@ -33,16 +33,16 @@ export default {
           username: this.username,
         })
         .then((response) => {
-          this.$router.push({
-            name: "login",
-          });
-          this.$router.go();
           console.log(response.data.data);
           window.sessionStorage.removeItem("username");
           window.sessionStorage.removeItem("token");
           window.sessionStorage.removeItem("kondisi");
           window.sessionStorage.removeItem("role");
           console.log(window.sessionStorage.getItem("username"));
+          this.$router.push({
+            name: "login",
+          });
+          this.$router.go();
         })
         .catch((error) => {
           this.validation = error.response.data.data;
