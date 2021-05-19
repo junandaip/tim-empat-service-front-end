@@ -21,23 +21,41 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr
-                      v-for="book in books"
-                      :key="book.id"
-                      style="text-align: center; vertical-align: middle"
-                    >
+                      <tr
+                        v-for="book in books"
+                        :key="book.id"
+                        style="text-align: center; vertical-align: middle"
+                      >
                       <td>{{ book.judul }}</td>
                       <td>{{ book.penulis }}</td>
                       <td>{{ book.kategori }}</td>
                       <td>{{ book.stock }}</td>
-                      <div v-if="kondisi === '1'">
-                        <td class="text-center">
-                          <b-button
-                            @click="pinjamBuku(book.id)"
-                            variant="primary"
-                            >Pinjam Buku</b-button
-                          >
-                        </td>
+                      <div v-if="role === '1'">
+                        <div v-if="kondisi === '1'">
+                          <td class="text-center">
+                            <b-button
+                              @click="pinjamBuku(book.id)"
+                              variant="primary"
+                              >Pinjam Buku</b-button
+                            >
+                          </td>
+                        </div>
+                      </div>
+                      <div v-if="role === '2'">
+                        <div v-if="kondisi === '1'">
+                          <td class="text-center">
+                            <b-button
+                              @click="editBuku(book.id)"
+                              variant="success"
+                              >Edit</b-button
+                            >
+                            <b-button
+                              @click="hapusBuku(book.id)"
+                              variant="danger"
+                              >Hapus</b-button
+                            >
+                          </td>
+                        </div>
                       </div>
                     </tr>
                   </tbody>
@@ -60,6 +78,7 @@ export default {
       books: [],
       username: window.sessionStorage.getItem("username"),
       kondisi: window.sessionStorage.getItem("kondisi"),
+      role: window.sessionStorage.getItem("role")
     };
   },
   mounted() {
@@ -68,7 +87,7 @@ export default {
   methods: {
     getBuku() {
       axios
-        .get("http://localhost:8000/api/book", {
+        .get("http://localhost:8091/api/book", {
           params: {
             token: window.sessionStorage.getItem("token"),
           },
