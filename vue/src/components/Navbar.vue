@@ -57,7 +57,7 @@
               >Logout</b-button
             >
 
-            <b-modal ref="my-modal" hide-footer title="Yakin Logout?">
+            <b-modal id="modal-1" ref="my-modal" hide-footer title="Yakin Logout?">
               <div class="col-md-12 text-center">
                 <b-button block variant="danger" @click="Logout">Logout</b-button>
                 <b-button block variant="primary mx-2" @click="hideModal">Cancel</b-button>
@@ -88,7 +88,7 @@ export default {
     },
     Logout() {
       axios
-        .post("http://localhost:8091/api/logout", {
+        .post("http://localhost:8000/api/logout", {
           username: this.username,
         })
         .then((response) => {
