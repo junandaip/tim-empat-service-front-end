@@ -66,7 +66,7 @@ export default {
   methods: {
     Login() {
       axios
-        .post("http://localhost:9000/api/login", this.post)
+        .post("https://tim-empat-api-gateway.herokuapp.com/api/login", this.post)
         .then((response) => {
           console.log(response.data.result.result.token);
           console.log(response.data.result.result.kondisi);

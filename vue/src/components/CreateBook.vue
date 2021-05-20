@@ -61,7 +61,7 @@ export default {
   methods: {
     submitForm() {
       axios
-        .post("http://localhost:9000/api/book/", this.form, {
+        .post("https://tim-empat-api-gateway.herokuapp.com/api/book/", this.form, {
           params: {
             token: window.sessionStorage.getItem("token"),
           },

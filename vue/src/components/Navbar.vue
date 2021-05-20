@@ -88,7 +88,7 @@ export default {
     },
     Logout() {
       axios
-        .post("http://localhost:9000/api/logout", {
+        .post("https://tim-empat-api-gateway.herokuapp.com/api/logout", {
           username: this.username,
         })
         .then((response) => {

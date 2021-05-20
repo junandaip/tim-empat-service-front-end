@@ -97,7 +97,7 @@ export default {
   methods: {
     getBuku() {
       axios
-        .get("http://localhost:9000/api/book", {
+        .get("https://tim-empat-api-gateway.herokuapp.com/api/book", {
           params: {
             token: window.sessionStorage.getItem("token")
           },
@@ -112,7 +112,7 @@ export default {
     pinjamBuku(id) {
       axios
         .post(
-          "http://localhost:9000/api/pinjam/",
+          "https://tim-empat-api-gateway.herokuapp.com/api/pinjam/",
           {
             username: this.username,
             id_buku: id,
@@ -136,7 +136,7 @@ export default {
     PostDelete(id) {
       if (confirm("Hapus Buku?")) {
         axios
-          .delete("http://localhost:9000/api/book/" + id, {
+          .delete("https://tim-empat-api-gateway.herokuapp.com/api/book/" + id, {
             params: {
               token: window.sessionStorage.getItem("token"),
             },

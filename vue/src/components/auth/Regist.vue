@@ -68,7 +68,7 @@ export default {
   methods: {
     Register() {
       axios
-        .post("http://localhost:9000/api/register", this.post)
+        .post("https://tim-empat-api-gateway.herokuapp.com/api/register", this.post)
         .then((response) => {
           this.$router.push({
             name: "login",

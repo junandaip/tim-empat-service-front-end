@@ -61,7 +61,7 @@ export default {
     };
   },
   created(){
-      axios.get(`http://localhost:9000/api/book/id/${this.$route.params.id}`, {
+      axios.get(`https://tim-empat-api-gateway.herokuapp.com/api/book/id/${this.$route.params.id}`, {
           params: {
               token: window.sessionStorage.getItem("token"),
           },
@@ -73,7 +73,7 @@ export default {
   methods: {
     submitForm() {
       axios
-        .put(`http://localhost:9000/api/book/${this.$route.params.id}`, this.books, {
+        .put(`https://tim-empat-api-gateway.herokuapp.com/api/book/${this.$route.params.id}`, this.books, {
           params: {
             token: window.sessionStorage.getItem("token"),
           },
