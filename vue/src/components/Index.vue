@@ -64,11 +64,6 @@
                     </tr>
                   </tbody>
                 </table>
-                <p>token : {{ token }} </p>
-                <p>username : {{ username }} </p>
-                <p>kondisi : {{ kondisi }} </p>
-                <p>role : {{ role }} </p>
-
               </div>
             </div>
           </div>
