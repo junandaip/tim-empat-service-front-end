@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <router-link class="navbar-brand mx-3" to="/">Kunglao Library</router-link>
+    <router-link class="navbar-brand mx-3" :to="{ name: 'Home' }">Kunglao Library</router-link>
     <button
       class="navbar-toggler"
       type="button"
@@ -23,12 +23,12 @@
       <ul class="navbar-nav">
         <div v-if="!username">
           <li class="nav-item">
-            <router-link class="nav-link" to="/login">Login</router-link>
+            <router-link class="nav-link" :to="{ name: 'login' }">Login</router-link>
           </li>
         </div>
         <div v-if="!username">
           <li class="nav-item">
-            <router-link class="nav-link" to="/regist">Register</router-link>
+            <router-link class="nav-link" :to="{ name: 'regist' }">Register</router-link>
           </li>
         </div>
         <div v-if="role === '2'">

@@ -37,7 +37,7 @@
               <br />
               <div class="row">
                 <div class="col" style="text-align: left">
-                  <router-link class="nav-link" to="/login"
+                  <router-link class="nav-link" :to="{ name: 'login' }"
                     >Sudah punya akun?</router-link
                   >
                 </div>
