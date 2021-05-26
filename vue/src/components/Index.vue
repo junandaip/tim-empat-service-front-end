@@ -42,7 +42,9 @@
                         </div>
                         <div v-if="kondisi === '1' && book.stock == 0">
                           <td class="text-center">
-                            <b-button disabled variant="secondary">Stok Habis</b-button>
+                            <b-button disabled variant="secondary"
+                              >Stok Habis</b-button
+                            >
                           </td>
                         </div>
                       </div>
@@ -94,7 +96,7 @@ export default {
       axios
         .get("https://tim-empat-api-gateway.herokuapp.com/api/book", {
           params: {
-            token: window.sessionStorage.getItem("token")
+            token: window.sessionStorage.getItem("token"),
           },
         })
         .then((response) => {
