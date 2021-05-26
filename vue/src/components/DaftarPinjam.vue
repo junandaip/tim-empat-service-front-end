@@ -61,7 +61,7 @@ export default {
   methods: {
     getPinjaman() {
       axios
-        .get("https://tim-empat-api-gateway.herokuapp.com/api/pinjam" + this.username, {
+        .get("https://tim-empat-api-gateway.herokuapp.com/api/pinjam/" + this.username, {
           params: {
             token: window.sessionStorage.getItem("token"),
           },
@@ -76,7 +76,7 @@ export default {
     },
     PostReturn(id) {
       axios
-        .delete("https://tim-empat-api-gateway.herokuapp.com/api/pinjam" + id, {
+        .delete("https://tim-empat-api-gateway.herokuapp.com/api/pinjam/" + id, {
           params: {
             token: window.sessionStorage.getItem("token"),
           },
