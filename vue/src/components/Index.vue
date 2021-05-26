@@ -107,7 +107,7 @@ export default {
     pinjamBuku(id) {
       axios
         .post(
-          "https://tim-empat-api-gateway.herokuapp.com/api/pinjam/",
+          "https://tim-empat-api-gateway.herokuapp.com/api/pinjam",
           {
             username: this.username,
             id_buku: id,
@@ -131,7 +131,7 @@ export default {
     PostDelete(id) {
       if (confirm("Hapus Buku?")) {
         axios
-          .delete("https://tim-empat-api-gateway.herokuapp.com/api/book/" + id, {
+          .delete("https://tim-empat-api-gateway.herokuapp.com/api/book" + id, {
             params: {
               token: window.sessionStorage.getItem("token"),
             },
