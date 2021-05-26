@@ -39,15 +39,25 @@
         </div>
         <div v-if="role === '2'">
           <li class="nav-item">
-            <router-link class="nav-link" :to="{ name: 'Create' }"
-              >Create</router-link
+            <b-button
+              class="text-decoration-none"
+              style="color: #4d4d4d"
+              variant="link"
+              id="show-btn"
+              @click="toCreate"
+              >Create</b-button
             >
           </li>
         </div>
         <div v-if="role === '1'">
           <li class="nav-item">
-            <router-link class="nav-link" :to="{ name: 'Peminjaman' }"
-              >Peminjaman</router-link
+            <b-button
+              class="text-decoration-none"
+              style="color: #4d4d4d"
+              variant="link"
+              id="show-btn"
+              @click="toPinjam"
+              >Pinjam</b-button
             >
           </li>
         </div>
@@ -100,6 +110,16 @@ export default {
     },
     hideModal() {
       this.$refs["my-modal"].hide();
+    },
+    toCreate() {
+      this.$router.push({
+        name: "Create",
+      });
+    },
+    toPinjam() {
+      this.$router.push({
+        name: "Peminjaman",
+      });
     },
     Logout() {
       axios

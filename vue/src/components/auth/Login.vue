@@ -85,6 +85,7 @@ export default {
         })
         .catch((error) => {
           this.validation = error.response.data;
+          console.log(this.validation)
         });
     },
   },
