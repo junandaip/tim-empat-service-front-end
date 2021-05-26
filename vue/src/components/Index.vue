@@ -42,7 +42,9 @@
                         </div>
                         <div v-if="kondisi === '1' && book.stock == 0">
                           <td class="text-center">
-                            <b-button disabled variant="secondary">Stok Habis</b-button>
+                            <b-button disabled variant="secondary"
+                              >Stok Habis</b-button
+                            >
                           </td>
                         </div>
                       </div>
@@ -94,7 +96,7 @@ export default {
       axios
         .get("https://tim-empat-api-gateway.herokuapp.com/api/book", {
           params: {
-            token: window.sessionStorage.getItem("token")
+            token: window.sessionStorage.getItem("token"),
           },
         })
         .then((response) => {
@@ -107,7 +109,7 @@ export default {
     pinjamBuku(id) {
       axios
         .post(
-          "https://tim-empat-api-gateway.herokuapp.com/api/pinjam/",
+          "https://tim-empat-api-gateway.herokuapp.com/api/pinjam",
           {
             username: this.username,
             id_buku: id,
@@ -131,7 +133,7 @@ export default {
     PostDelete(id) {
       if (confirm("Hapus Buku?")) {
         axios
-          .delete("https://tim-empat-api-gateway.herokuapp.com/api/book/" + id, {
+          .delete("https://tim-empat-api-gateway.herokuapp.com/api/book" + id, {
             params: {
               token: window.sessionStorage.getItem("token"),
             },

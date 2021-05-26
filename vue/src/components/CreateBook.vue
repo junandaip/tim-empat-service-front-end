@@ -37,7 +37,7 @@
       required
       v-model="form.stock"
     />
-    <br/>
+    <br />
     <div class="submit">
       <button type="submit" class="btn btn-primary">Submit</button>
     </div>
@@ -61,14 +61,18 @@ export default {
   methods: {
     submitForm() {
       axios
-        .post("https://tim-empat-api-gateway.herokuapp.com/api/book/", this.form, {
-          params: {
-            token: window.sessionStorage.getItem("token"),
-          },
-        })
+        .post(
+          "https://tim-empat-api-gateway.herokuapp.com/api/book",
+          this.form,
+          {
+            params: {
+              token: window.sessionStorage.getItem("token"),
+            },
+          }
+        )
         .then((response) => {
           this.$router.push({
-            name: "Index"
+            name: "Index",
           });
           this.$router.go(0);
           console.log(response);
