@@ -133,7 +133,7 @@ export default {
     PostDelete(id) {
       if (confirm("Hapus Buku?")) {
         axios
-          .delete("https://tim-empat-api-gateway.herokuapp.com/api/book" + id, {
+          .delete("https://tim-empat-api-gateway.herokuapp.com/api/book/" + id, {
             params: {
               token: window.sessionStorage.getItem("token"),
             },

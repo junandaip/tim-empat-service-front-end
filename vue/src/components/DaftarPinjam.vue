@@ -18,11 +18,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr
-                      v-for="book in books"
-                      :key="book.id"
-                      style="text-align: center; vertical-align: middle"
-                    >
+                    <tr v-for="book in books" :key="book.id" style="text-align: center; vertical-align: middle">
                       <td>{{ book.judul }}</td>
                       <td>{{ book.penulis }}</td>
                       <td>{{ book.kategori }}</td>
@@ -65,15 +61,11 @@ export default {
   methods: {
     getPinjaman() {
       axios
-        .get(
-          "https://tim-empat-api-gateway.herokuapp.com/api/pinjam/" +
-            this.username,
-          {
-            params: {
-              token: window.sessionStorage.getItem("token"),
-            },
-          }
-        )
+        .get("https://tim-empat-api-gateway.herokuapp.com/api/pinjam" + this.username, {
+          params: {
+            token: window.sessionStorage.getItem("token"),
+          },
+        })
         .then((response) => {
           this.books = response.data.result.Buku;
           this.id_pinjam = response.data.result.id_pinjam;
@@ -84,14 +76,11 @@ export default {
     },
     PostReturn(id) {
       axios
-        .delete(
-          "https://tim-empat-api-gateway.herokuapp.com/api/pinjam/" + id,
-          {
-            params: {
-              token: window.sessionStorage.getItem("token"),
-            },
-          }
-        )
+        .delete("https://tim-empat-api-gateway.herokuapp.com/api/pinjam" + id, {
+          params: {
+            token: window.sessionStorage.getItem("token"),
+          },
+        })
         .then((response) => {
           this.getPinjaman();
           window.sessionStorage.setItem("kondisi", "1");
