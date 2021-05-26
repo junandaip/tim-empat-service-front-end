@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 //import Vue Router
 import VueRouter from 'vue-router'
+import VueAnalytics from 'vue-analytics';
 
 //menggunkan Vue Router di Vue JS
 Vue.use(VueRouter);
@@ -21,6 +22,12 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
+
+// Configuration VueAnalytics
+Vue.use(VueAnalytics, {
+  id: 'UA-197916370-1',
+  VueRouter
+});
 
 Vue.config.productionTip = false
 
