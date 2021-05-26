@@ -142,6 +142,7 @@ export default {
             this.$router.push({
               name: "Home",
             });
+            this.getBuku();
             this.books.splice(this.books.indexOf(id), 1);
             console.log(response.data);
           })
